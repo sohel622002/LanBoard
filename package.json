@@ -1,0 +1,68 @@
+{
+  "name": "project-vault",
+  "version": "1.0.0",
+  "description": "project management web app",
+  "license": "ISC",
+  "author": "sohel shaikh",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "build": {
+    "appId": "com.sohelshaikh.projectvault",
+    "productName": "Project Vault",
+    "asar": true,
+    "files": [
+      "index.js",
+      "frontend/dist/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "backend/dist/backend.exe",
+        "to": "app.asar.unpacked/backend/dist/backend.exe"
+      },
+      {
+        "from": "backend/.env",
+        "to": "app.asar.unpacked/backend/.env"
+      },
+      {
+        "from": "backend/prisma/",
+        "to": "app.asar.unpacked/backend/prisma/"
+      },
+      {
+        "from": "backend/generated/",
+        "to": "app.asar.unpacked/backend/generated/"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "uninstallDisplayName": "Project Vault",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "dependencies": {
+    "child_process": "^1.0.2"
+  },
+  "devDependencies": {
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.12"
+  }
+}

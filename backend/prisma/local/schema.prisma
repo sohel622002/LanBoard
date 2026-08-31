@@ -1,0 +1,68 @@
+generator client {
+    provider = "prisma-client-js"
+    output   = "../generated/local-client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("LOCAL_DATABASE_URL")
+}
+
+model User {
+    id        String    @id @default(uuid())
+    email     String    @unique
+    password  String
+    fullName  String?
+    isAdmin   Boolean
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    projectId String?
+    projects  Project[] @relation("Collaborators")
+    tasks     Task[]    @relation("TaskAssignees") // 👈 new relation (inverse)
+}
+
+model Project {
+    id            String    @id @default(uuid())
+    name          String    @unique
+    description   String?
+    startDate     DateTime
+    deadline      DateTime?
+    status        String    @default("active")
+    priority      Priority?
+    collaborators User[]    @relation("Collaborators")
+    createdAt     DateTime  @default(now())
+    updatedAt     DateTime  @updatedAt
+    stages        Stage[]
+}
+
+enum Priority {
+    HIGH
+    MEDIUM
+    LOW
+}
+
+model Stage {
+    id        String   @id @default(uuid())
+    index     Int      @default(0)
+    name      String // e.g. "todo", "in_progress", "done", or user-created stage
+    projectId String // each project can define its own stages
+    project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+    tasks     Task[]
+    isDefault Boolean  @default(false)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Task {
+    id          String    @id @default(uuid())
+    index       Int       @default(0)
+    title       String
+    description String?
+    priority    Priority?
+    dueDate     DateTime?
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    stageId     String
+    stage       Stage     @relation(fields: [stageId], references: [id])
+    assignees   User[]    @relation("TaskAssignees")
+}
