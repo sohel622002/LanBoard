@@ -1,4 +1,4 @@
-# Project Vault — Feature Status
+# LanBoard — Feature Status
 
 A plain-English breakdown of what's actually working, what's half-built, and what's missing — based on reading the code (routes, pages, components) and comparing it against `frontend/prd.md`.
 

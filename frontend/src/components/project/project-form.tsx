@@ -77,8 +77,6 @@ type FormValues =
 type ProjectFormProps = {
   open: boolean;
   setOpen: (open: boolean) => void;
-  // createProject: (data: Partial<any>) => Promise<void>;
-  // updateProject: (data: Partial<any>, projectId: string) => Promise<void>;
   initialData?: { data: Project | null; projectId: string }; // for update
   mode?: "create" | "update";
 };

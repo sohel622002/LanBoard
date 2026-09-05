@@ -26,12 +26,7 @@ export default function UsersPage() {
       <main className="p-4 space-y-4">
         <div className="flex justify-between">
           <h1 className="text-2xl font-semibold">All Users</h1>
-          <Button
-          // onClick={() => {
-          //   setProjectFormMode("create");
-          //   setOpen(true);
-          // }}
-          >
+          <Button>
             <PlusIcon /> New User
           </Button>
         </div>

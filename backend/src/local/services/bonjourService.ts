@@ -44,8 +44,8 @@ export class BonjourService {
 
         const ip = getLocalIp();
         this.published = this.bonjour.publish({
-            name: `ProjectVault-${userid}`,
-            type: "projectvault",
+            name: `LanBoard-${userid}`,
+            type: "lanboard",
             port,
             txt: { userid, ip },
         });
@@ -66,7 +66,7 @@ export class BonjourService {
     listen() {
         bonjourService.stopListening();
 
-        const browser = this.bonjour.find({ type: "projectvault" });
+        const browser = this.bonjour.find({ type: "lanboard" });
         browser.on("up", (service: RemoteService) => { 
             const ip = service.txt.ip || service.referer.address;
             const admin = {

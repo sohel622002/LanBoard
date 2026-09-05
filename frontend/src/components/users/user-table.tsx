@@ -6,8 +6,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-// import { Checkbox } from "@/components/ui/checkbox";
-// import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Edit2Icon, EyeIcon, Loader2, Trash2Icon } from "lucide-react";
@@ -17,12 +15,6 @@ import type { User } from "@/types/user";
 
 export function UserTable({ users }: { users: User[] }) {
   const [projectDeleting] = useState<string | null>(null);
-
-  //   const handleProjectDelete = async (id: string) => {
-  //     setProjectDeleting(id);
-  //     await deleteProject(id);
-  //     setProjectDeleting(null);
-  //   };
 
   return (
     <div className="rounded-md border bg-card border-border">
@@ -59,18 +51,10 @@ export function UserTable({ users }: { users: User[] }) {
                       <Button variant="ghost" size="icon">
                         <EyeIcon className="h-4 w-4" />
                       </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        //   onClick={() => updateProjectClickHandler(project)}
-                      >
+                      <Button variant="ghost" size="icon">
                         <Edit2Icon className="h-4 w-4" />
                       </Button>
-                      <Button
-                        //   onClick={() => handleProjectDelete(project.id)}
-                        variant="destructive"
-                        size="icon"
-                      >
+                      <Button variant="destructive" size="icon">
                         {projectDeleting && projectDeleting === user.id ? (
                           <Loader2 className="h-4 w-4 animate-spin" />
                         ) : (

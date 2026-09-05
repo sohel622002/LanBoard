@@ -2,7 +2,6 @@ import { ProjectPagination } from "@/components/project/project-pagination";
 import { ProjectTable } from "@/components/project/project-table";
 import { ProjectToolbar } from "@/components/project/project-toolbar";
 import { useState } from "react";
-// import { useProject } from "@/hooks/useProject";
 import ProjectCards from "@/components/project/project-cards";
 import { ProjectForm } from "@/components/project/project-form";
 import type { Project } from "@/types/project";
@@ -15,7 +14,6 @@ import { projectApi } from "@/api/projects";
 export default function ProjectPage() {
   const queryClient = useQueryClient();
   const [deletingId, setDeletingId] = useState<string | null>(null);
-  // const { updateProject } = useProject();
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 5;
   const [open, setOpen] = useState(false);
@@ -94,8 +92,6 @@ export default function ProjectPage() {
           open={open}
           setOpen={setOpen}
           initialData={updateProjectData}
-          // createProject={createProject}
-          // updateProject={updateProject}
           mode={projectFormMode}
         />
         <ProjectToolbar view={view} setView={setView} />

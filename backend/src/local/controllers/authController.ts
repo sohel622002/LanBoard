@@ -4,7 +4,7 @@ import { LoginRequest } from '../../types/auth';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'PROJECT_VAULT_DEFAULT_SECRET_0001';
+const JWT_SECRET = process.env.JWT_SECRET || 'LANBOARD_DEFAULT_SECRET_0001';
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
 
 export class AuthController {

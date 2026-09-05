@@ -19,7 +19,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-// import { useProject } from "@/hooks/useProject";
 import { useProjectStage } from "@/hooks/useProjectStage";
 import { formattedDate } from "@/lib/utils";
 import type { Project, ProjectStage } from "@/types/project";
@@ -272,80 +271,6 @@ export default function ProjectView() {
     </>
   );
 }
-
-// {project.stages.map((stage) => (
-//                   <div className="w-80 shrink-0" key={stage.id}>
-//                     <Card className="py-3">
-//                       <CardContent>
-//                         <div className="flex justify-between rounded-md group">
-//                           <h4>{stage.name}</h4>
-//                           {/* Count badge */}
-//                           {!stage.isDefault && (
-//                             <DeleteStageConfirmation
-//                               stage={stage}
-//                               projectId={project.id}
-//                               deleteStage={deleteStage}
-//                             />
-//                           )}
-
-//                           {/* If stage is default, just show count (no delete) */}
-//                           {stage.isDefault && (
-//                             <span className="flex text-xs w-6 h-6 rounded-full items-center justify-center bg-muted">
-//                               4
-//                             </span>
-//                           )}
-//                         </div>
-//                       </CardContent>
-//                     </Card>
-//                     <Droppable droppableId={stage.id}>
-//                       {(provided, snapshot) => (
-//                         // <div className="mt-3 space-y-2">
-//                         <div
-//                           ref={provided.innerRef}
-//                           {...provided.droppableProps}
-//                           className={`mt-3 space-y-2 transition-all border-2 ${
-//                             snapshot.isDraggingOver
-//                               ? "border-dashed border-sky-400"
-//                               : "border-transparent"
-//                           }`}
-//                         >
-//                           {stage.tasks &&
-//                             stage.tasks.map((task, index) => (
-//                               <Draggable
-//                                 draggableId={task.id}
-//                                 index={index}
-//                                 key={task.id}
-//                               >
-//                                 {(dragProvided, dragSnapshot) => (
-//                                   <div
-//                                     ref={dragProvided.innerRef}
-//                                     {...dragProvided.draggableProps}
-//                                     {...dragProvided.dragHandleProps}
-//                                     className={`mb-2 p-3 rounded-lg shadow-sm bg-white border ${
-//                                       dragSnapshot.isDragging
-//                                         ? "opacity-90 scale-105"
-//                                         : ""
-//                                     }`}
-//                                   >
-//                                     <ProjectTaskCard
-//                                       key={task.id}
-//                                       task={task}
-//                                       projectId={id as string}
-//                                     />
-//                                   </div>
-//                                 )}
-//                               </Draggable>
-//                             ))}
-//                           {provided.placeholder}
-//                           <ProjectTaskFormCard
-//                             projectId={id as string}
-//                             stageId={stage.id}
-//                           />
-//                         </div>
-//                       )}
-//                     </Droppable>
-//                   </div>
-//                 ))}
 
 function DeleteStageConfirmation({
   stage,

@@ -20,7 +20,6 @@ export function ProjectToolbar({
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         {/* Left: view switch */}
         <div className="flex flex-wrap gap-2">
-          {/* <Button variant="outline">Calendar</Button> */}
           <Button
             variant={view === "table" ? "default" : "outline"}
             onClick={() => setView("table")}
@@ -33,7 +32,6 @@ export function ProjectToolbar({
           >
             Cards
           </Button>
-          {/* <Button variant="outline">Kanban</Button> */}
         </div>
 
         {/* Right: filters + new project */}
@@ -49,15 +47,6 @@ export function ProjectToolbar({
               <SelectItem value="design">Design</SelectItem>
             </SelectContent>
           </Select>
-          {/* <Button variant="outline">+ Filter</Button> */}
-          {/* <Button
-            onClick={() => {
-              setProjectFormMode("create");
-              setOpen(true);
-            }}
-          >
-            + New Project
-          </Button> */}
         </div>
       </div>
     </>

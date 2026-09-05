@@ -121,7 +121,6 @@ function SetupCard(props: SetUpCardProps) {
             <span className="text-sm font-medium">
               Downloading... ({postgresBinariesDownloadProgress}%)
             </span>
-            {/* <Spinner size={20} primaryColor="fill-primary" /> */}
             {postgresBinariesDownloadProgress > 0 &&
               postgresBinariesDownloadProgress < 100 && (
                 <Loader2Icon className="animate-spin" />
@@ -137,7 +136,6 @@ function SetupCard(props: SetUpCardProps) {
             <span className="text-sm font-medium">
               Initializing... (This may take a few minutes)
             </span>
-            {/* <Spinner size={20} primaryColor="fill-primary" /> */}
             <Loader2Icon className="animate-spin" />
           </div>
         </div>

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useSocket } from "./useSocket";
 import { SOCKET_EVENTS } from "@/constants/socketEvents";
 import toast from "react-hot-toast";
-// import { useUser } from "./useUser";
 import { userApi } from "@/api/user";
 
 export function usePostgresBinaries() {
@@ -14,8 +13,6 @@ export function usePostgresBinaries() {
     const [initializingPostgresBinaries, setInitializingPostgresBinaries] = useState(false);
     const [postgresRunning, setPostgresRunning] = useState(false);
     const [postgresBinariesEvent, setPostgresBinariesEvent] = useState("");
-
-    // const { createUser } = useUser();
 
     const { on, off } = useSocket();
 
@@ -107,7 +104,6 @@ export function usePostgresBinaries() {
             const localStoredAdminUser = JSON.parse(localStorage.getItem("user") as string);
             console.log("localStoredAdminUser", localStoredAdminUser);
             delete localStoredAdminUser.id;
-            // await createUser(localStoredAdminUser);
             await userApi.createUser(localStoredAdminUser)
             setPostgresRunning(true)
         } catch (error: Error | any) {
@@ -152,7 +148,6 @@ export function usePostgresBinaries() {
                 const eventKey = data['event'] as PostgresDownloadEventKey;
                 if (eventKey in postgresDownloadEvents) {
                     setPostgresBinariesEvent(postgresDownloadEvents[eventKey]);
-                    // if (eventKey === 'done') initializePostgresBinaries();
                     if (eventKey === 'extracting') setDownloadingPostgresBinaries(false)
                 } else {
                     setPostgresBinariesEvent("");

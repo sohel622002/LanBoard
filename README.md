@@ -1,4 +1,4 @@
-# Project Vault
+# LanBoard
 
 Local-first desktop project management application for teams. An admin hosts project data on a local PostgreSQL database while team members connect over the LAN — with Kanban boards, real-time updates, and cloud-based account authentication.
 
@@ -70,8 +70,8 @@ Built with **Electron**, **React**, **Node.js**, and **PostgreSQL**.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/sohel622002/project-vault.git
-cd project-vault
+git clone https://github.com/sohel622002/lanboard.git
+cd lanboard
 ```
 
 ### 2. Install dependencies
@@ -101,7 +101,7 @@ DATABASE_URL=postgresql://user:password@host:6543/postgres
 DIRECT_URL=postgresql://user:password@host:5432/postgres
 
 # Local PostgreSQL
-LOCAL_DATABASE_URL=postgresql://postgres:password@localhost:55432/projectvault
+LOCAL_DATABASE_URL=postgresql://postgres:password@localhost:55432/lanboard
 ```
 
 **`frontend/.env`**
@@ -175,7 +175,7 @@ The installer is output to the `dist/` directory.
 ## Project Structure
 
 ```
-project-vault/
+lanboard/
 ├── index.js              # Electron main process
 ├── package.json          # Electron & build config
 ├── backend/

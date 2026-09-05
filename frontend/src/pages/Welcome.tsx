@@ -16,7 +16,7 @@ export default function Welcome() {
               <Building2 className="w-5 h-5 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-xl font-semibold">ProjectVault</h1>
+              <h1 className="text-xl font-semibold">LanBoard</h1>
               <p className="text-xs text-muted-foreground">v2.1.0</p>
             </div>
           </div>
@@ -28,7 +28,7 @@ export default function Welcome() {
         <div className="container max-w-4xl mx-auto">
           <div className="text-center mb-5">
             <h2 className="text-3xl font-semibold mb-4">
-              Welcome to ProjectVault
+              Welcome to LanBoard
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Streamline your project management with powerful tools for teams

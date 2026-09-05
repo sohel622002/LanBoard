@@ -75,18 +75,7 @@ export function NavUser({
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                {/* <IconUserCircle /> */}
-                Account
-              </DropdownMenuItem>
-              {/* <DropdownMenuItem>
-                <IconCreditCard />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconNotification />
-                Notifications
-              </DropdownMenuItem> */}
+              <DropdownMenuItem>Account</DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem
@@ -95,7 +84,6 @@ export function NavUser({
                 logout();
               }}
             >
-              {/* <IconLogout /> */}
               Log out
             </DropdownMenuItem>
           </DropdownMenuContent>

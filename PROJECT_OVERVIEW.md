@@ -1,8 +1,8 @@
-# Project Vault — What Is This, Really?
+# LanBoard — What Is This, Really?
 
 ## The Elevator Pitch
 
-Project Vault is a desktop app for teams to manage projects together — think Trello/Jira-style Kanban boards — but with a twist: **all your project data stays on one person's computer**, not on someone else's cloud server.
+LanBoard is a desktop app for teams to manage projects together — think Trello/Jira-style Kanban boards — but with a twist: **all your project data stays on one person's computer**, not on someone else's cloud server.
 
 One team member (the "admin" or "host") runs the app on their machine. That machine becomes the home for all the projects, tasks, and boards. Everyone else on the same office/home network (LAN) connects to that host machine's app and works together in real time — moving cards, updating tasks, seeing changes instantly.
 

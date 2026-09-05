@@ -1,19 +1,7 @@
 import * as React from "react";
-import {
-  Calendar,
-  ChevronDown,
-  ChevronUp,
-  Folder,
-  GalleryVerticalEnd,
-  Users,
-} from "lucide-react";
+import { Calendar, Folder, GalleryVerticalEnd, Users } from "lucide-react";
 
 import { SearchForm } from "@/components/search-form";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 import {
   Sidebar,
   SidebarContent,
@@ -23,9 +11,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { NavUser } from "./nav-user";
@@ -78,7 +63,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <GalleryVerticalEnd className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
-                  <span className="font-medium">Project Vault</span>
+                  <span className="font-medium">LanBoard</span>
                   <span className="">v1.0.0</span>
                 </div>
               </Link>
@@ -90,8 +75,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         {data.navMain.map((item) => (
           <SidebarGroup key={item.title}>
-            {/* <SidebarGroupLabel>{item.title}</SidebarGroupLabel> */}
-            {/* <SidebarGroupContent> */}
             <SidebarMenu>
               {item.items.map((item) => (
                 <SidebarMenuItem key={item.title}>
@@ -101,59 +84,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
-            {/* </SidebarGroupContent> */}
           </SidebarGroup>
         ))}
-
-        {/* <SidebarGroup>
-          <SidebarMenu>
-            {data.navMain.map((item, index) => (
-              <Collapsible
-                key={item.title}
-                defaultOpen={index === 1}
-                className="group/collapsible"
-              >
-                <SidebarMenuItem className="flex items-center justify-between">
-                  
-                  <SidebarMenuButton asChild>
-                    <a href={item.url} className="flex items-center gap-2">
-                      {item.icon && <item.icon />}
-                      {item.title}
-                    </a>
-                  </SidebarMenuButton>
-
-                
-                  {item.items?.length ? (
-                    <CollapsibleTrigger asChild>
-                      <button className="ml-auto flex items-center">
-                        <ChevronDown className="h-4 w-4 group-data-[state=open]/collapsible:hidden" />
-                        <ChevronUp className="h-4 w-4 group-data-[state=closed]/collapsible:hidden" />
-                      </button>
-                    </CollapsibleTrigger>
-                  ) : null}
-                </SidebarMenuItem>
-
-              
-                {item.items?.length ? (
-                  <CollapsibleContent>
-                    <SidebarMenuSub>
-                      {item.items.map((subItem) => (
-                        <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton
-                            asChild
-                            isActive={subItem.isActive}
-                          >
-                            <a href={subItem.url}>{subItem.title}</a>
-                          </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                      ))}
-                    </SidebarMenuSub>
-                  </CollapsibleContent>
-                ) : null}
-              </Collapsible>
-            ))}
-          </SidebarMenu>
-        </SidebarGroup> */}
       </SidebarContent>
       <SidebarRail />
       <SidebarFooter>
