@@ -110,7 +110,7 @@ export default function AdminConnection() {
 
   if (connectionStep === "login" && selectedServer) {
     return (
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-background to-muted">
+      <div className="min-h-screen flex flex-col bg-background">
         <header className="p-6">
           <div className="container mx-auto">
             <Button
@@ -160,7 +160,7 @@ export default function AdminConnection() {
                       {...register("email")}
                     />
                     {errors.email && (
-                      <p className="text-sm text-red-500">
+                      <p className="text-sm text-destructive">
                         {errors.email.message}
                       </p>
                     )}
@@ -177,7 +177,7 @@ export default function AdminConnection() {
                       {...register("password")}
                     />
                     {errors.password && (
-                      <p className="text-sm text-red-500">
+                      <p className="text-sm text-destructive">
                         {errors.password.message}
                       </p>
                     )}
@@ -201,7 +201,7 @@ export default function AdminConnection() {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-background to-muted">
+      <div className="min-h-screen flex flex-col bg-background">
         <header className="p-6">
           <div className="container mx-auto">
             <Button

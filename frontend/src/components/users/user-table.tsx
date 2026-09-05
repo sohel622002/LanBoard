@@ -52,7 +52,9 @@ export function UserTable({ users }: { users: User[] }) {
                       {user.fullName}
                     </TableCell>
                     <TableCell className="font-medium">{user.email}</TableCell>
-                    <TableCell>{formattedDate(user.createdAt)}</TableCell>
+                    <TableCell className="font-mono text-xs tabular-nums text-muted-foreground">
+                      {formattedDate(user.createdAt)}
+                    </TableCell>
                     <TableCell className="space-x-1">
                       <Button variant="ghost" size="icon">
                         <EyeIcon className="h-4 w-4" />

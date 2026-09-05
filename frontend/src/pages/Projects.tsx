@@ -71,14 +71,16 @@ export default function ProjectPage() {
     setProjectFormMode("update");
   };
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error fetching users</p>;
+  if (isLoading)
+    return <p className="text-sm text-muted-foreground">Loading...</p>;
+  if (error)
+    return <p className="text-sm text-destructive">Error fetching projects</p>;
 
   return (
     <>
       <main className="p-4 space-y-4">
         <div className="flex justify-between">
-          <h1 className="text-2xl font-bold">All Projects</h1>
+          <h1 className="text-2xl font-semibold">All Projects</h1>
           <Button
             onClick={() => {
               setProjectFormMode("create");

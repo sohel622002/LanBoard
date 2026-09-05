@@ -8,10 +8,10 @@ export default function PreSignup({
 }) {
   return (
     <div>
-      <h1 className="text-4xl text-primary font-bold text-center mb-2">
+      <h1 className="text-4xl text-foreground font-semibold text-center mb-2">
         How will you use ProjectVault?
       </h1>
-      <p className="text-primary text-center max-w-md mx-auto leading-5 mb-5">
+      <p className="text-muted-foreground text-center max-w-md mx-auto leading-5 mb-5">
         Choose wisely ProjectVault will need to configure server settings based
         on your choice.
       </p>
@@ -29,16 +29,16 @@ export default function PreSignup({
             />
 
             {/* Title */}
-            <h2 className="text-2xl font-bold text-primary">Use as a Team</h2>
+            <h2 className="text-2xl font-semibold text-foreground">Use as a Team</h2>
 
             {/* Description */}
-            <p className="text-primary leading-relaxed px-4">
+            <p className="text-muted-foreground leading-relaxed px-4">
               Collaborate with your teammates and manage projects together.
             </p>
 
             {/* Continue Button */}
             <Button
-              className="w-full font-bold cursor-pointer"
+              className="w-full font-medium cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
                 choosePlan("team");
@@ -71,16 +71,16 @@ export default function PreSignup({
             />
 
             {/* Title */}
-            <h2 className="text-2xl font-bold text-primary">Use Solo</h2>
+            <h2 className="text-2xl font-semibold text-foreground">Use Solo</h2>
 
             {/* Description */}
-            <p className="text-primary leading-relaxed px-4">
+            <p className="text-muted-foreground leading-relaxed px-4">
               Manage your personal projects efficiently and securely.
             </p>
 
             {/* Continue Button */}
             <Button
-              className="w-full font-bold cursor-pointer"
+              className="w-full font-medium cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
                 choosePlan("solo");

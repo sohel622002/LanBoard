@@ -10,14 +10,14 @@ export const AppInitializer = ({ children }: AppInitializerProps) => {
 
   if (loading)
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center h-screen bg-background text-foreground">
         Loading...
       </div>
     );
 
   if (error)
     return (
-      <div className="flex items-center justify-center h-screen text-red-500">
+      <div className="flex items-center justify-center h-screen bg-background text-destructive">
         Error: {error}
       </div>
     );

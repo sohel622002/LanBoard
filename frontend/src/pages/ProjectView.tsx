@@ -14,14 +14,14 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+import { StatusBadge, PriorityBadge } from "@/components/status-badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 // import { useProject } from "@/hooks/useProject";
 import { useProjectStage } from "@/hooks/useProjectStage";
-import { cn, formattedDate } from "@/lib/utils";
+import { formattedDate } from "@/lib/utils";
 import type { Project, ProjectStage } from "@/types/project";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { PlusIcon, Trash2Icon, User2Icon } from "lucide-react";
@@ -140,7 +140,7 @@ export default function ProjectView() {
                 )}
                 {/* If stage is default, just show count (no delete) */}
                 {stage.isDefault && (
-                  <span className="flex text-xs w-6 h-6 rounded-full items-center justify-center bg-muted">
+                  <span className="flex text-xs font-mono w-6 h-6 rounded-full items-center justify-center bg-muted text-muted-foreground">
                     {stage.tasks.length}
                   </span>
                 )}
@@ -188,72 +188,61 @@ export default function ProjectView() {
     }
   );
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error fetching users</p>;
+  if (isLoading)
+    return <p className="text-sm text-muted-foreground">Loading...</p>;
+  if (error)
+    return <p className="text-sm text-destructive">Error fetching project</p>;
 
   return (
     <>
       <main className="p-4 space-y-4">
         <div className="flex justify-between">
-          <h1 className="text-2xl font-bold">{project?.name}</h1>
+          <h1 className="text-2xl font-semibold">{project?.name}</h1>
           {/* <Button>
             <User2Icon /> Add Member
           </Button> */}
         </div>
         <Card>
-          <CardContent className="space-y-2">
+          <CardContent className="space-y-4">
             <div>
-              <span className="text-muted-foreground text-sm">Description</span>
-              <p className="line-clamp-3">{project?.description || "--"}</p>
+              <span className="text-muted-foreground text-xs uppercase tracking-wide">
+                Description
+              </span>
+              <p className="line-clamp-3 text-sm">
+                {project?.description || "--"}
+              </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-              <div>
-                <span className="text-muted-foreground text-sm">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              <div className="flex flex-col gap-1">
+                <span className="text-muted-foreground text-xs uppercase tracking-wide">
                   Start Date
                 </span>
-                <p>{formattedDate(project?.startDate)}</p>
-              </div>
-              <div>
-                <span className="text-muted-foreground text-sm">Deadline</span>
-                <p>{formattedDate(project?.deadline)}</p>
+                <p className="font-mono text-sm tabular-nums">
+                  {formattedDate(project?.startDate)}
+                </p>
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-muted-foreground text-sm">Status</span>
-                <Badge
-                  variant="outline"
-                  className={cn(
-                    "capitalize bg-yellow-100 text-yellow-700",
-                    project?.status === "active" &&
-                      "bg-green-100 text-green-700",
-                    project?.status === "Design" &&
-                      "bg-purple-100 text-purple-700"
-                  )}
-                >
-                  {project?.status.toLowerCase()}
-                </Badge>
+                <span className="text-muted-foreground text-xs uppercase tracking-wide">
+                  Deadline
+                </span>
+                <p className="font-mono text-sm tabular-nums">
+                  {formattedDate(project?.deadline)}
+                </p>
               </div>
               <div className="flex flex-col gap-1">
-                {project?.priority && (
-                  <>
-                    <span className="text-muted-foreground text-sm">
-                      Priority
-                    </span>
-                    <Badge
-                      className={cn(
-                        "capitalize",
-                        project?.priority === "HIGH" &&
-                          "bg-red-100 text-red-700",
-                        project?.priority === "MEDIUM" &&
-                          "bg-orange-100 text-orange-700",
-                        project?.priority === "LOW" &&
-                          "bg-blue-100 text-blue-700"
-                      )}
-                    >
-                      {project?.priority.toLowerCase()}
-                    </Badge>
-                  </>
-                )}
+                <span className="text-muted-foreground text-xs uppercase tracking-wide">
+                  Status
+                </span>
+                <StatusBadge status={project?.status} />
               </div>
+              {project?.priority && (
+                <div className="flex flex-col gap-1">
+                  <span className="text-muted-foreground text-xs uppercase tracking-wide">
+                    Priority
+                  </span>
+                  <PriorityBadge priority={project?.priority} />
+                </div>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -388,8 +377,8 @@ function DeleteStageConfirmation({
   };
   return (
     <>
-      <span className="flex text-xs w-6 h-6 rounded-full items-center justify-center bg-muted group-hover:hidden">
-        4
+      <span className="flex text-xs font-mono w-6 h-6 rounded-full items-center justify-center bg-muted text-muted-foreground group-hover:hidden">
+        {stage.tasks.length}
       </span>
       <AlertDialog
         open={open}
@@ -397,7 +386,7 @@ function DeleteStageConfirmation({
       >
         <AlertDialogTrigger
           onClick={() => setOpen(true)}
-          className="hidden cursor-pointer text-red-500 w-6 h-6 rounded-full items-center justify-center group-hover:flex"
+          className="hidden cursor-pointer text-destructive w-6 h-6 rounded-full items-center justify-center group-hover:flex"
         >
           <Trash2Icon className="w-4 h-4" />
         </AlertDialogTrigger>

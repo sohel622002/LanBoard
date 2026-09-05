@@ -7,7 +7,7 @@ export default function Welcome() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-background to-muted">
+    <div className="min-h-screen flex flex-col bg-background">
       {/* Header */}
       <header className="p-6">
         <div className="container mx-auto flex justify-between items-center">

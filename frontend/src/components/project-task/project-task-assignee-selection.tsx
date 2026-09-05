@@ -117,7 +117,7 @@ export default function ProjectTaskAssigneeSelection(
                   <Item
                     variant="outline"
                     key={user.id}
-                    className="p-2 border-none hover:bg-slate-200 cursor-pointer"
+                    className="p-2 border-none hover:bg-accent cursor-pointer"
                     onClick={() => handleToggleAssignee(user.id)}
                   >
                     <ItemMedia>
@@ -134,9 +134,9 @@ export default function ProjectTaskAssigneeSelection(
                     </ItemContent>
                     <ItemActions>
                       {isAssigned ? (
-                        <Check className="size-4 text-green-600" />
+                        <Check className="size-4 text-success" />
                       ) : (
-                        <PlusIcon className="size-4 text-gray-500" />
+                        <PlusIcon className="size-4 text-muted-foreground" />
                       )}
                     </ItemActions>
                   </Item>

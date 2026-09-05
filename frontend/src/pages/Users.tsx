@@ -16,14 +16,16 @@ export default function UsersPage() {
     staleTime: 1000 * 60 * 5, // 5 min stale time
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error fetching users</p>;
+  if (isLoading)
+    return <p className="text-sm text-muted-foreground">Loading...</p>;
+  if (error)
+    return <p className="text-sm text-destructive">Error fetching users</p>;
 
   return (
     <>
       <main className="p-4 space-y-4">
         <div className="flex justify-between">
-          <h1 className="text-2xl font-bold">All Users</h1>
+          <h1 className="text-2xl font-semibold">All Users</h1>
           <Button
           // onClick={() => {
           //   setProjectFormMode("create");

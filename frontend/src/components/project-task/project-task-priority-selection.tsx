@@ -16,9 +16,9 @@ export default function ProjectTaskPrioritySelection(
   const [isPriorityPopoverOpen, setIsPriorityPopoverOpen] = useState(false);
 
   const options: { label: string; value: Priority; color: string }[] = [
-    { label: "High", value: "HIGH", color: "red" },
-    { label: "Medium", value: "MEDIUM", color: "blue" },
-    { label: "Low", value: "LOW", color: "gray" },
+    { label: "High", value: "HIGH", color: "text-destructive" },
+    { label: "Medium", value: "MEDIUM", color: "text-warning" },
+    { label: "Low", value: "LOW", color: "text-info" },
     { label: "Clear", value: null, color: "" },
   ];
   const onSelect = (value: Priority) => {
@@ -45,13 +45,13 @@ export default function ProjectTaskPrioritySelection(
                 key={opt.label}
                 onClick={() => onSelect(opt.value)}
                 className={cn(
-                  "flex items-center p-1 justify-between hover:bg-gray-200 rounded-md cursor-pointer",
-                  props.priority === opt.value && "bg-gray-100"
+                  "flex items-center p-1 justify-between hover:bg-accent rounded-md cursor-pointer",
+                  props.priority === opt.value && "bg-accent"
                 )}
               >
                 <span className="flex gap-1 items-center text-sm">
                   {opt.value ? (
-                    <FlagIcon className={`w-4 h-4 text-${opt.color}-700`} />
+                    <FlagIcon className={cn("w-4 h-4", opt.color)} />
                   ) : (
                     <CircleOffIcon className="w-4 h-4" />
                   )}

@@ -83,7 +83,7 @@ export function SignupForm({
                   {...register("email")}
                 />
                 {errors.email && (
-                  <p className="text-sm text-red-500">{errors.email.message}</p>
+                  <p className="text-sm text-destructive">{errors.email.message}</p>
                 )}
               </div>
               <div className="grid gap-3">
@@ -95,7 +95,7 @@ export function SignupForm({
                   {...register("fullName")}
                 />
                 {errors.fullName && (
-                  <p className="text-sm text-red-500">
+                  <p className="text-sm text-destructive">
                     {errors.fullName.message}
                   </p>
                 )}
@@ -106,7 +106,7 @@ export function SignupForm({
                 </div>
                 <Input id="password" type="text" {...register("password")} />
                 {errors.password && (
-                  <p className="text-sm text-red-500">
+                  <p className="text-sm text-destructive">
                     {errors.password.message}
                   </p>
                 )}
@@ -121,7 +121,7 @@ export function SignupForm({
                   {...register("confirmPassword")}
                 />
                 {errors.confirmPassword && (
-                  <p className="text-sm text-red-500">
+                  <p className="text-sm text-destructive">
                     {errors.confirmPassword.message}
                   </p>
                 )}

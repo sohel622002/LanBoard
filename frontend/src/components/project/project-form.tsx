@@ -195,7 +195,7 @@ export function ProjectForm(projectFormProps: ProjectFormProps) {
             <Label>Project name</Label>
             <Input placeholder="Enter project name" {...register("name")} />
             {errors.name && (
-              <p className="text-red-500 text-sm">{errors.name.message}</p>
+              <p className="text-destructive text-sm">{errors.name.message}</p>
             )}
           </div>
 
@@ -219,7 +219,7 @@ export function ProjectForm(projectFormProps: ProjectFormProps) {
               )}
             />
             {errors.priority && (
-              <p className="text-red-500 text-sm">{errors.priority.message}</p>
+              <p className="text-destructive text-sm">{errors.priority.message}</p>
             )}
           </div>
 
@@ -234,7 +234,7 @@ export function ProjectForm(projectFormProps: ProjectFormProps) {
               {...register("description")}
             />
             {errors.description && (
-              <p className="text-red-500 text-sm">
+              <p className="text-destructive text-sm">
                 {errors.description.message}
               </p>
             )}
@@ -256,7 +256,7 @@ export function ProjectForm(projectFormProps: ProjectFormProps) {
                 )}
               />
               {errors.startDate && (
-                <p className="text-red-500 text-sm">
+                <p className="text-destructive text-sm">
                   {errors.startDate.message}
                 </p>
               )}
@@ -276,7 +276,7 @@ export function ProjectForm(projectFormProps: ProjectFormProps) {
                 )}
               />
               {errors.deadline && (
-                <p className="text-red-500 text-sm">
+                <p className="text-destructive text-sm">
                   {errors.deadline.message}
                 </p>
               )}

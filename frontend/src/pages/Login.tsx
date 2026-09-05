@@ -28,14 +28,14 @@ export default function Login() {
 
   if (loading)
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center h-screen bg-background text-foreground">
         Loading...
       </div>
     );
 
   return (
     <>
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-background to-muted">
+      <div className="min-h-screen flex flex-col bg-background">
         {/* Header */}
         <header className="p-6">
           <div className="container mx-auto">

@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { cn, formattedDate } from "@/lib/utils";
+import { formattedDate } from "@/lib/utils";
 import { Button } from "../ui/button";
 import {
   Calendar,
@@ -17,7 +17,7 @@ import {
   Loader2,
   Trash2Icon,
 } from "lucide-react";
-import { Badge } from "../ui/badge";
+import { StatusBadge, PriorityBadge } from "@/components/status-badge";
 import type { UseMutationResult } from "@tanstack/react-query";
 
 export default function ProjectCards({
@@ -38,24 +38,12 @@ export default function ProjectCards({
           <Card className="gap-3" key={project.id}>
             <CardHeader>
               <CardTitle className="text-lg truncate">{project.name}</CardTitle>
-              <CardDescription className="flex gap-1">
-                <Calendar className="h-4 w-4 mt-[1px]" />{" "}
+              <CardDescription className="flex items-center gap-1 font-mono text-xs tabular-nums">
+                <Calendar className="h-3.5 w-3.5" />
                 {formattedDate(project.startDate)}
               </CardDescription>
               <CardAction>
-                {project.priority && (
-                  <Badge
-                    className={cn(
-                      "capitalize",
-                      project.priority === "HIGH" && "bg-red-100 text-red-700",
-                      project.priority === "MEDIUM" &&
-                        "bg-orange-100 text-orange-700",
-                      project.priority === "LOW" && "bg-blue-100 text-blue-700"
-                    )}
-                  >
-                    {project.priority.toLowerCase()}
-                  </Badge>
-                )}
+                <PriorityBadge priority={project.priority} />
               </CardAction>
             </CardHeader>
             <CardContent className="space-y-2">
@@ -68,23 +56,18 @@ export default function ProjectCards({
                 </p>
               </div>
               <div>
-                <span className="text-muted-foreground text-sm">Deadline</span>
-                <p className="text-sm">{formattedDate(project.deadline)}</p>
+                <span className="text-muted-foreground text-xs uppercase tracking-wide">
+                  Deadline
+                </span>
+                <p className="font-mono text-sm tabular-nums">
+                  {formattedDate(project.deadline)}
+                </p>
               </div>
-              <div className="flex justify-between">
-                <span className="text-muted-foreground text-sm">Status</span>
-                <Badge
-                  variant="outline"
-                  className={cn(
-                    "capitalize bg-yellow-100 text-yellow-700",
-                    project.status === "active" &&
-                      "bg-green-100 text-green-700",
-                    project.status === "Design" &&
-                      "bg-purple-100 text-purple-700"
-                  )}
-                >
-                  {project.status.toLowerCase()}
-                </Badge>
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground text-xs uppercase tracking-wide">
+                  Status
+                </span>
+                <StatusBadge status={project.status} />
               </div>
             </CardContent>
             <CardFooter className="flex space-x-1 justify-end">

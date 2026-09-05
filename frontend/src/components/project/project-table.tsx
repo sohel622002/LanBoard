@@ -7,12 +7,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 // import { Checkbox } from "@/components/ui/checkbox";
-import { Badge } from "@/components/ui/badge";
+import { StatusBadge, PriorityBadge } from "@/components/status-badge";
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Edit2Icon, EyeIcon, Loader2, Trash2Icon } from "lucide-react";
 import type { Project } from "@/types/project";
-import { cn, formattedDate } from "@/lib/utils";
+import { formattedDate } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { type UseMutationResult } from "@tanstack/react-query";
 
@@ -57,22 +57,15 @@ export function ProjectTable({
                     <Checkbox />
                   </TableCell> */}
                   <TableCell className="font-medium">{project.name}</TableCell>
-                  <TableCell>{formattedDate(project.startDate)}</TableCell>
-                  <TableCell>{formattedDate(project.deadline)}</TableCell>
+                  <TableCell className="font-mono text-xs tabular-nums text-muted-foreground">
+                    {formattedDate(project.startDate)}
+                  </TableCell>
+                  <TableCell className="font-mono text-xs tabular-nums text-muted-foreground">
+                    {formattedDate(project.deadline)}
+                  </TableCell>
                   {/* <TableCell>{project.currency ?? "---"}</TableCell> */}
                   <TableCell>
-                    <Badge
-                      variant="outline"
-                      className={cn(
-                        "capitalize bg-yellow-100 text-yellow-700",
-                        project.status === "active" &&
-                          "bg-green-100 text-green-700",
-                        project.status === "Design" &&
-                          "bg-purple-100 text-purple-700"
-                      )}
-                    >
-                      {project.status.toLowerCase()}
-                    </Badge>
+                    <StatusBadge status={project.status} />
                   </TableCell>
                   {/* <TableCell className="flex gap-1">
                   {project.people.map((p, i) => (
@@ -83,19 +76,7 @@ export function ProjectTable({
                   ))}
                 </TableCell> */}
                   <TableCell>
-                    <Badge
-                      className={cn(
-                        "capitalize",
-                        project.priority === "HIGH" &&
-                          "bg-red-100 text-red-700",
-                        project.priority === "MEDIUM" &&
-                          "bg-orange-100 text-orange-700",
-                        project.priority === "LOW" &&
-                          "bg-blue-100 text-blue-700"
-                      )}
-                    >
-                      {project.priority.toLowerCase()}
-                    </Badge>
+                    <PriorityBadge priority={project.priority} />
                   </TableCell>
                   <TableCell className="space-x-1">
                     <Button
